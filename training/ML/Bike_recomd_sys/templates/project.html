@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Bike Price Prediction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+        }
+        select:focus, input[type="number"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+            background-color: #fff;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="{{ url_for('predict') }}" method="post">
+        <h2>Bike Price Prediction</h2>
+        
+        <div class="form-group">
+            <label for="brand">Select Brand</label>
+            <select name="brand_name" id="brand" required>
+                <option value="" disabled selected>Select Brand</option>
+                <option value="Royal Enfield">Royal Enfield</option>
+                <option value="KTM">KTM</option>
+                <option value="Bajaj">Bajaj</option>
+                <option value="Harley-Davidson">Harley-Davidson</option>
+                <option value="Yamaha">Yamaha</option>
+                <option value="Honda">Honda</option>
+                <option value="Suzuki">Suzuki</option>
+                <option value="TVS">TVS</option>
+                <option value="Kawasaki">Kawasaki</option>
+                <option value="Hyosung">Hyosung</option>
+                <option value="Benelli">Benelli</option>
+                <option value="Mahindra">Mahindra</option>
+                <option value="Triumph">Triumph</option>
+                <option value="Ducati">Ducati</option>
+                <option value="BMW">BMW</option>
+                <option value="Rajdoot">Rajdoot</option>
+                <option value="Indian">Indian</option>
+                <option value="LML">LML</option>
+                <option value="Yezdi">Yezdi</option>
+                <option value="MV">MV</option>
+                <option value="Ideal">Ideal</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="owner">Select Owner</label>
+            <select name="owner" id="owner" required>
+                <option value="" disabled selected>Select Owner</option>
+                <option value="1">First Owner</option>
+                <option value="2">Second Owner</option>
+                <option value="3">Third Owner</option>
+                <option value="4">Fourth Owner</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Bike Age (in years)</label>
+            <input type="number" id="age" name="age" placeholder="Enter vehicle age" min="0" required>
+        </div>
+
+        <div class="form-group">
+            <label for="power">Power (in HP)</label>
+            <input type="number" id="power" name="power" placeholder="Enter vehicle power" min="0" required>
+        </div>
+
+        <div class="form-group">
+            <label for="kms_driven">Kms Driven</label>
+            <input type="number" id="kms_driven" name="kms_driven" placeholder="Enter kilometers driven" min="0" required>
+        </div>
+
+        <button type="submit">Predict Price</button>
+    </form>
+
+    <div class="Prediction">
+        <h2>Bike Price is : {{ prediction }}</h2>
+        
+    </div>
+</body>
+</html>
