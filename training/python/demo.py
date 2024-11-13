@@ -19,7 +19,7 @@
 # print(comapny.lower())
 
 # print(len(comapny))
-# print(company.count())
+# print(company.count("g"))
 
 # name = "hello world"
 
